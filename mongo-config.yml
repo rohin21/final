@@ -8,8 +8,8 @@ data:
     security:
       clusterAuthMode: x509
     net:
-      ssl:
-        mode: allowSSL
+      tls:
+        mode: requireTLS
         PEMKeyFile: /etc/ssl/mongodb.pem
         CAFile: /etc/ssl/root-ca.pem
         allowConnectionsWithoutCertificates: true
