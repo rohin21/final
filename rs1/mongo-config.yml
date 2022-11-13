@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-config
+  namespace: rs1
+data:
+  mongod.conf: |
+    security:
+      clusterAuthMode: x509
+    net:
+      tls:
+        mode: requireTLS
+        certificateKeyFile: /etc/ssl/mongodb.pem
+        CAFile: /etc/ssl/root-ca.pem
+        allowConnectionsWithoutCertificates: true
