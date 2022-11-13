@@ -13,3 +13,4 @@ data:
         certificateKeyFile: /etc/ssl/mongodb.pem
         CAFile: /etc/ssl/root-ca.pem
         allowConnectionsWithoutCertificates: true
+        tlsAllowInvalidHostnames: true
