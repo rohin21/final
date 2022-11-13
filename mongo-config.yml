@@ -10,6 +10,6 @@ data:
     net:
       tls:
         mode: requireTLS
-        PEMKeyFile: /etc/ssl/mongodb.pem
+        certificateKeyFile: /etc/ssl/mongodb.pem
         CAFile: /etc/ssl/root-ca.pem
         allowConnectionsWithoutCertificates: true
