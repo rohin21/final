@@ -1,0 +1,55 @@
+apiVersion: "apps/v1"
+kind: StatefulSet
+metadata:
+  name: "mongo-db"
+  namespace: "final"
+spec:
+  serviceName: "mongo-svc"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "mongo-db"
+  template:
+    metadata:
+      labels:
+        app: "mongo-db"
+    spec:
+      hostname: mongodb
+      containers:
+        - name: "mongo-db"
+          image: "mongo"
+          imagePullPolicy: "Always"
+          command:
+            - mongod
+            - --config
+            - /etc/mongo/mongod.conf
+            - --bind_ip_all
+            - --replSet
+            - rs0
+          ports:
+            - containerPort: 27017
+              name: "mongodb"
+          volumeMounts:
+            - name: "mongodb-persistent-storage"
+              mountPath: "/data/db"
+            - name: "mongo-config"
+              mountPath: /etc/mongo
+            - name: "mongo-secrets"
+              mountPath: /etc/ssl
+      volumes:
+        - name: "mongo-config"
+          configMap:
+            name: "mongo-config"
+        - name: "mongo-secrets"
+          secret:
+            secretName: mongo-secrets
+  volumeClaimTemplates:
+    - metadata:
+        name: mongodb-persistent-storage
+      spec:
+        storageClassName: microk8s-hostpath
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
