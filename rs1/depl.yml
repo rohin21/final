@@ -26,7 +26,6 @@ spec:
             - --bind_ip_all
             - --replSet
             - rs0
-            - --tlsAllowInvalidHostnames
           ports:
             - containerPort: 27017
               name: "mongodb"
