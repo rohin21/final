@@ -30,7 +30,7 @@ spec:
             - containerPort: 27017
               name: "mongodb"
           volumeMounts:
-            - name: "mongodb-persistent-storage"
+            - name: "mongodb-persistent-storage-0"
               mountPath: "/data/db"
             - name: "mongo-config"
               mountPath: /etc/mongo
@@ -45,7 +45,7 @@ spec:
             secretName: mongo-secrets
   volumeClaimTemplates:
     - metadata:
-        name: mongodb-persistent-storage
+        name: mongodb-persistent-storage-0
       spec:
         storageClassName: microk8s-hostpath
         accessModes:
