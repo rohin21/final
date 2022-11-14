@@ -2,7 +2,7 @@ kind: PersistentVolumeClaim
 apiVersion: "v1"
 metadata:
   name: "mongodb-pvc"
-  namespace: "final"
+  namespace: "rs2"
   labels:
     app: "mongo-db"
 spec:

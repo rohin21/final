@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mongo-config
-  namespace: rs1
+  namespace: rs0
 data:
   mongod.conf: |
     security:
@@ -13,8 +13,8 @@ data:
       tls:
         mode: requireTLS
         CAFile: /etc/ssl/mongodb-ca.crt
-        certificateKeyFile: /etc/ssl/mongodb2.pem
-        clusterFile: /etc/ssl/mongodb2.pem
+        certificateKeyFile: /etc/ssl/mongodb1.pem
+        clusterFile: /etc/ssl/mongodb1.pem
         allowConnectionsWithoutCertificates: true
     replication:  
       replSetName: "staging-test"

@@ -2,7 +2,7 @@ apiVersion: "apps/v1"
 kind: StatefulSet
 metadata:
   name: "mongo-db"
-  namespace: "rs1"
+  namespace: "rs2"
 spec:
   serviceName: "mongo-svc"
   replicas: 1
@@ -30,7 +30,7 @@ spec:
             - containerPort: 27017
               name: "mongodb"
           volumeMounts:
-            - name: "mongodb-persistent-storage-1"
+            - name: "mongodb-persistent-storage-2"
               mountPath: "/data/db"
             - name: "mongo-config"
               mountPath: /etc/mongo
@@ -45,7 +45,7 @@ spec:
             secretName: mongo-secrets
   volumeClaimTemplates:
     - metadata:
-        name: mongodb-persistent-storage-1
+        name: mongodb-persistent-storage-2
       spec:
         storageClassName: microk8s-hostpath
         accessModes:

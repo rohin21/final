@@ -2,16 +2,19 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mongo-config
-  namespace: final
+  namespace: rs2
 data:
   mongod.conf: |
     security:
       authorization: enabled
       clusterAuthMode: x509
     net:
+      bindIp: 0.0.0.0
       tls:
         mode: requireTLS
-        certificateKeyFile: /etc/ssl/mongodb.pem
-        CAFile: /etc/ssl/root-ca.pem
-        clusterFile: /etc/ssl/mongodb.pem
+        CAFile: /etc/ssl/mongodb-ca.crt
+        certificateKeyFile: /etc/ssl/mongodb3.pem
+        clusterFile: /etc/ssl/mongodb3.pem
         allowConnectionsWithoutCertificates: true
+    replication:  
+      replSetName: "staging-test"
