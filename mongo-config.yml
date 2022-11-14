@@ -6,10 +6,12 @@ metadata:
 data:
   mongod.conf: |
     security:
+      authorization: enabled
       clusterAuthMode: x509
     net:
       tls:
         mode: requireTLS
         certificateKeyFile: /etc/ssl/mongodb.pem
         CAFile: /etc/ssl/root-ca.pem
+        clusterFile: /etc/ssl/mongodb.pem
         allowConnectionsWithoutCertificates: true
