@@ -5,16 +5,16 @@ metadata:
   namespace: rs2
 data:
   mongod.conf: |
-    security:
-      authorization: enabled
-      clusterAuthMode: x509
+    # security:
+    #   authorization: enabled
+    #   clusterAuthMode: x509
     net:
       bindIp: 0.0.0.0
-      tls:
-        mode: requireTLS
-        CAFile: /etc/ssl/mongodb-ca.crt
-        certificateKeyFile: /etc/ssl/mongodb3.pem
-        clusterFile: /etc/ssl/mongodb3.pem
-        allowConnectionsWithoutCertificates: true
+      # tls:
+      #   mode: requireTLS
+      #   CAFile: /etc/ssl/mongodb-ca.crt
+      #   certificateKeyFile: /etc/ssl/mongodb3.pem
+      #   clusterFile: /etc/ssl/mongodb3.pem
+      #   allowConnectionsWithoutCertificates: true
     replication:  
       replSetName: "staging-test"

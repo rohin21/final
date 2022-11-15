@@ -8,7 +8,7 @@ metadata:
 spec:
   ports:
     - name: "mongodb"
-      port: 27022
+      port: 27019
       targetPort: 27017
       nodePort: 30019
   type: NodePort
