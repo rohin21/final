@@ -19,13 +19,14 @@ spec:
         - name: "mongo-db"
           image: "mongo"
           imagePullPolicy: "Always"
-          # command:
-          #   - mongod
+          command:
+            - mongod
+            - --replSet
+            - rs0
           #   - --config
           #   - /etc/mongo/mongod.conf
           # - --bind_ip_all
-          # - --replSet
-          # - rs0
+
           ports:
             - containerPort: 27017
               name: "mongodb"

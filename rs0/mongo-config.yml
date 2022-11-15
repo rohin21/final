@@ -15,5 +15,3 @@ data:
         certificateKeyFile: /etc/ssl/mongodb1.pem
         clusterFile: /etc/ssl/mongodb1.pem
         allowConnectionsWithoutCertificates: true
-    replication:  
-      replSetName: "staging-test"
