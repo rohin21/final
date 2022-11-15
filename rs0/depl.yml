@@ -21,11 +21,8 @@ spec:
           imagePullPolicy: "Always"
           command:
             - mongod
-            - --replSet
-            - rs0
-            - --bind_ip_all
-          #   - --config
-          #   - /etc/mongo/mongod.conf
+            - --config
+            - /etc/mongo/mongod.conf
 
           ports:
             - containerPort: 27017
@@ -33,14 +30,14 @@ spec:
           volumeMounts:
             - name: "mongodb-persistent-storage-0"
               mountPath: "/data/db"
-            # - name: "mongo-config"
-            #   mountPath: /etc/mongo
+            - name: "mongo-config"
+              mountPath: /etc/mongo
             - name: "mongo-secrets"
               mountPath: /etc/ssl
       volumes:
-        # - name: "mongo-config"
-        #   configMap:
-        #     name: "mongo-config"
+        - name: "mongo-config"
+          configMap:
+            name: "mongo-config"
         - name: "mongo-secrets"
           secret:
             secretName: mongo-secrets
