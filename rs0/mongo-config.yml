@@ -9,7 +9,7 @@ data:
       authorization: enabled
       clusterAuthMode: x509
     net:
-      bindIp: 0.0.0.0/0
+      # bindIp: 0.0.0.0
       tls:
         mode: requireTLS
         CAFile: /etc/ssl/mongodb-ca.crt
